@@ -102,6 +102,7 @@ setTimeout(type,500);
 const title=$('#title');
 $$('#title span').forEach(s=>s.addEventListener('click',e=>{
   const r=s.getBoundingClientRect(); ripple(r.left+r.width/2,r.top+r.height/2);
+  pushLetter(s.textContent);
   title.classList.remove('glitch'); void title.offsetWidth; title.classList.add('glitch');
 }));
 
@@ -174,7 +175,7 @@ function sfxOff(){ try{
   g.gain.setValueAtTime(.5,t);g.gain.exponentialRampToValueAtTime(.001,t+.7);o.connect(g).connect(m);o.start(t);o.stop(t+.8);
 }catch(e){} }
 
-/* ---------- secret: blood mode (↑↑↓↓←→←→ B A, or 15 touch taps in 5s) ---------- */
+/* ---------- secret: blood mode (↑↑↓↓←→←→ B A, or E I M N N I) ---------- */
 const imp=$('#impact'), tagtxt=$('#tagtxt'), tagOrig=tagtxt.textContent; let busy=false;
 function applyBlood(on){
   document.body.classList.toggle('blood',on); readPalette(); blood.on=on;
@@ -199,16 +200,14 @@ addEventListener('keydown',e=>{
   if(e.key==='Escape'&&!modal.hidden)close();
   ki=(e.key.toLowerCase()===K[ki].toLowerCase())?ki+1:(e.key==='ArrowUp'?1:0);
   if(ki===K.length){ki=0;toggleBlood()}
+  if(/^[a-z]$/i.test(e.key)&&!e.ctrlKey&&!e.metaKey&&!e.altKey)pushLetter(e.key);
 });
-// phone trigger: 15 touch taps anywhere within 5 seconds (each finger counts)
-let taps=[];
-function countTaps(k){
-  const n=performance.now(); taps=taps.filter(x=>n-x<5000);
-  for(let i=0;i<k;i++)taps.push(n);
-  if(taps.length>=15){taps=[];toggleBlood()}
+// phone code: tap the hero letters  E → I → M → N → N → I  (typing the letters on a keyboard works too)
+const CODE='EIMNNI'; let ci=0, codeT;
+function pushLetter(ch){
+  ch=ch.toUpperCase();
+  ci=(ch===CODE[ci])?ci+1:(ch===CODE[0]?1:0);
+  clearTimeout(codeT); if(ci)codeT=setTimeout(()=>ci=0,6000);
+  if(ci===CODE.length){ci=0;toggleBlood()}
 }
-if('ontouchstart' in window||navigator.maxTouchPoints>0)
-  addEventListener('touchstart',e=>countTaps(e.changedTouches.length||1),{passive:true,capture:true});
-else
-  addEventListener('pointerdown',e=>{if(e.pointerType==='touch')countTaps(1)},{passive:true,capture:true});
 })();
