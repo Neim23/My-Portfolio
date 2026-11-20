@@ -174,7 +174,7 @@ function sfxOff(){ try{
   g.gain.setValueAtTime(.5,t);g.gain.exponentialRampToValueAtTime(.001,t+.7);o.connect(g).connect(m);o.start(t);o.stop(t+.8);
 }catch(e){} }
 
-/* ---------- secret: blood mode (↑↑↓↓←→←→ B A, or tap the logo 7×) ---------- */
+/* ---------- secret: blood mode (↑↑↓↓←→←→ B A, or 15 touch taps in 5s) ---------- */
 const imp=$('#impact'), tagtxt=$('#tagtxt'), tagOrig=tagtxt.textContent; let busy=false;
 function applyBlood(on){
   document.body.classList.toggle('blood',on); readPalette(); blood.on=on;
@@ -200,9 +200,10 @@ addEventListener('keydown',e=>{
   ki=(e.key.toLowerCase()===K[ki].toLowerCase())?ki+1:(e.key==='ArrowUp'?1:0);
   if(ki===K.length){ki=0;toggleBlood()}
 });
-// phone trigger: tap the logo 7 times within 3s
-let taps=[]; $('.logo').addEventListener('click',e=>{
-  const n=performance.now(); taps=taps.filter(x=>n-x<3000); taps.push(n);
-  if(taps.length>=7){taps=[];e.preventDefault();toggleBlood()}
-});
+// phone trigger: 15 touch taps anywhere within 5 seconds
+let taps=[]; addEventListener('pointerdown',e=>{
+  if(e.pointerType!=='touch')return;
+  const n=performance.now(); taps=taps.filter(x=>n-x<5000); taps.push(n);
+  if(taps.length>=15){taps=[];toggleBlood()}
+},{passive:true});
 })();
