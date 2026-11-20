@@ -200,10 +200,15 @@ addEventListener('keydown',e=>{
   ki=(e.key.toLowerCase()===K[ki].toLowerCase())?ki+1:(e.key==='ArrowUp'?1:0);
   if(ki===K.length){ki=0;toggleBlood()}
 });
-// phone trigger: 15 touch taps anywhere within 5 seconds
-let taps=[]; addEventListener('pointerdown',e=>{
-  if(e.pointerType!=='touch')return;
-  const n=performance.now(); taps=taps.filter(x=>n-x<5000); taps.push(n);
+// phone trigger: 15 touch taps anywhere within 5 seconds (each finger counts)
+let taps=[];
+function countTaps(k){
+  const n=performance.now(); taps=taps.filter(x=>n-x<5000);
+  for(let i=0;i<k;i++)taps.push(n);
   if(taps.length>=15){taps=[];toggleBlood()}
-},{passive:true});
+}
+if('ontouchstart' in window||navigator.maxTouchPoints>0)
+  addEventListener('touchstart',e=>countTaps(e.changedTouches.length||1),{passive:true,capture:true});
+else
+  addEventListener('pointerdown',e=>{if(e.pointerType==='touch')countTaps(1)},{passive:true,capture:true});
 })();
