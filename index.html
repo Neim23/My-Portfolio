@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 <canvas id="fx" aria-hidden="true"></canvas>
@@ -40,14 +40,14 @@
 
   <section id="work" class="work reveal">
     <h2><span class="idx">01</span> SELECT LEVEL</h2>
-    <p class="lead">Sites I've built. Click a screen to zoom in.</p>
+    <p class="lead">Demo sites. Click a screen to zoom in, or visit the live version.</p>
     <div class="grid" id="grid">
-      <button class="card" data-img="assets/shots/cafe.png" data-title="BrewLab — coffee shop"><img src="assets/shots/cafe.png" alt="BrewLab coffee shop website" loading="lazy"><span>BREWLAB <small>Café &amp; shop</small></span></button>
-      <button class="card" data-img="assets/shots/saas.png" data-title="Pulse — SaaS dashboard"><img src="assets/shots/saas.png" alt="Pulse analytics dashboard" loading="lazy"><span>PULSE <small>SaaS dashboard</small></span></button>
-      <button class="card" data-img="assets/shots/photo.png" data-title="Mara Lindqvist — photo portfolio"><img src="assets/shots/photo.png" alt="Photographer portfolio" loading="lazy"><span>LIGHT &amp; SILENCE <small>Photo portfolio</small></span></button>
-      <button class="card" data-img="assets/shots/game.png" data-title="Neon/Forge — game studio"><img src="assets/shots/game.png" alt="Game studio landing page" loading="lazy"><span>NEON/FORGE <small>Game landing</small></span></button>
-      <button class="card" data-img="assets/shots/fit.png" data-title="FlexFit — fitness app"><img src="assets/shots/fit.png" alt="Fitness app landing page" loading="lazy"><span>FLEXFIT <small>App landing</small></span></button>
-      <button class="card" data-img="assets/shots/food.png" data-title="Osteria Luna — restaurant"><img src="assets/shots/food.png" alt="Restaurant website" loading="lazy"><span>OSTERIA LUNA <small>Restaurant</small></span></button>
+      <div class="item"><button class="card" data-img="assets/shots/cafe.png" data-title="BrewLab — coffee shop" data-url="https://neim23.github.io/brewlab-cafe/"><img src="assets/shots/cafe.png" alt="BrewLab coffee shop website" loading="lazy"><span>BREWLAB <small>Café &amp; shop</small></span></button><a class="visit" href="https://neim23.github.io/brewlab-cafe/" target="_blank" rel="noopener">▶ VISIT LIVE SITE</a></div>
+      <div class="item"><button class="card" data-img="assets/shots/saas.png" data-title="Pulse — SaaS dashboard" data-url="https://neim23.github.io/pulse-dashboard/"><img src="assets/shots/saas.png" alt="Pulse analytics dashboard" loading="lazy"><span>PULSE <small>SaaS dashboard</small></span></button><a class="visit" href="https://neim23.github.io/pulse-dashboard/" target="_blank" rel="noopener">▶ VISIT LIVE SITE</a></div>
+      <div class="item"><button class="card" data-img="assets/shots/photo.png" data-title="Mara Lindqvist — photo portfolio" data-url="https://neim23.github.io/light-and-silence/"><img src="assets/shots/photo.png" alt="Photographer portfolio" loading="lazy"><span>LIGHT &amp; SILENCE <small>Photo portfolio</small></span></button><a class="visit" href="https://neim23.github.io/light-and-silence/" target="_blank" rel="noopener">▶ VISIT LIVE SITE</a></div>
+      <div class="item"><button class="card" data-img="assets/shots/game.png" data-title="Neon/Forge — game studio" data-url="https://neim23.github.io/neon-forge/"><img src="assets/shots/game.png" alt="Game studio landing page" loading="lazy"><span>NEON/FORGE <small>Game landing</small></span></button><a class="visit" href="https://neim23.github.io/neon-forge/" target="_blank" rel="noopener">▶ VISIT LIVE SITE</a></div>
+      <div class="item"><button class="card" data-img="assets/shots/fit.png" data-title="FlexFit — fitness app" data-url="https://neim23.github.io/flexfit/"><img src="assets/shots/fit.png" alt="Fitness app landing page" loading="lazy"><span>FLEXFIT <small>App landing</small></span></button><a class="visit" href="https://neim23.github.io/flexfit/" target="_blank" rel="noopener">▶ VISIT LIVE SITE</a></div>
+      <div class="item"><button class="card" data-img="assets/shots/food.png" data-title="Osteria Luna — restaurant" data-url="https://neim23.github.io/osteria-luna/"><img src="assets/shots/food.png" alt="Restaurant website" loading="lazy"><span>OSTERIA LUNA <small>Restaurant</small></span></button><a class="visit" href="https://neim23.github.io/osteria-luna/" target="_blank" rel="noopener">▶ VISIT LIVE SITE</a></div>
     </div>
   </section>
 
@@ -74,11 +74,12 @@
 </footer>
 
 <div class="modal" id="modal" hidden>
-  <figure><img id="mimg" alt=""><figcaption id="mcap"></figcaption></figure>
+  <figure><img id="mimg" alt=""><figcaption id="mcap"></figcaption>
+    <a class="btn" id="mlink" target="_blank" rel="noopener">▶ OPEN LIVE SITE</a></figure>
   <button class="x" id="mx" aria-label="Close">✕</button>
 </div>
 <div id="impact" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status"></div>
-<script src="script.js?v=5"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>

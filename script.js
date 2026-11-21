@@ -136,7 +136,7 @@ $$('.card').forEach(card=>{
 
 /* ---------- lightbox ---------- */
 const modal=$('#modal'); let last;
-function open(card){last=card;$('#mimg').src=card.dataset.img;$('#mimg').alt=card.dataset.title;$('#mcap').textContent=card.dataset.title;modal.hidden=false;$('#mx').focus()}
+function open(card){last=card;$('#mimg').src=card.dataset.img;$('#mimg').alt=card.dataset.title;$('#mcap').textContent=card.dataset.title;$('#mlink').href=card.dataset.url;modal.hidden=false;$('#mx').focus()}
 function close(){modal.hidden=true;last&&last.focus()}
 $('#mx').onclick=close; modal.addEventListener('click',e=>{if(e.target===modal)close()});
 
